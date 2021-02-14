@@ -1,5 +1,7 @@
+
+""" 음의 코스트가 있다면 벨만 포드 최단 경로 사"""
+
 import sys
-import heapq
 input = sys.stdin.readline
 INF = int(1e9)
 
@@ -14,12 +16,12 @@ def belman_ford():
     dist[1] = 0
     for i in range(n):
         for j in range(m):
-            v = graph[j][0]
-            nv = graph[j][1]
-            w = graph[j][2]
+            v = graph[j][0] #시작 지점
+            nv = graph[j][1] #도착 지점
+            w = graph[j][2] #소요 시간
             if dist[v] != INF and dist[nv] > dist[v] + w:
                 dist[nv] = dist[v] + w
-                if i == n-1:
+                if i == n-1: #n번째 루트에 접근을 한다면 음의 사이클을 도는 것이다.
                     minus = True
     if minus:
         print(-1)
@@ -30,3 +32,4 @@ def belman_ford():
             else:
                 print(-1)
 belman_ford()
+
