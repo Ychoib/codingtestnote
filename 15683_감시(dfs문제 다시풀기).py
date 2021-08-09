@@ -67,3 +67,4 @@ for i in range(n):
         if not total_maps[i][j]:
             area += 1
 dfs(0)
+print(area)
